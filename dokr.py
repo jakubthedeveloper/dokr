@@ -9,6 +9,7 @@ import subprocess
 client = docker.from_env()
 
 containers = client.containers.list()
+containers.sort(key=lambda c: c.name)
 
 i = 0
 choiceList = []
