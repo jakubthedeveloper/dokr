@@ -36,16 +36,21 @@ dokr
 ```
 You may need to run it with `sudo` if you access your docker containers with `sudo`.
 
+# Show all containers
+
+```
+dokr --all
+```
+
 # Filter containers
 
 If you want to filter the containers list, just edit the script `/usr/local/bin/dokr`.
 
 ```
-  if True:
-  #if 'php' in c.name or 'systemd' in c.name:
+  if 'php' in c.name or 'systemd' in c.name:
 ``` 
 
-Remove or comment the line `if True:` na uncomment the other one. Replace `php` and `systemd` with a strings you want to use to filter the container names. You can add more conditions.
+Replace `php` and `systemd` with a strings you want to use to filter the container names. You can add more conditions.
 
 # Buy me a coffee
 

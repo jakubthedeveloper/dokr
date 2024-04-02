@@ -5,17 +5,20 @@
 
 import docker
 import subprocess
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("-a", "--all", action='store_const', const=True)
+args = parser.parse_args()
 
 client = docker.from_env()
 
 containers = client.containers.list()
-containers.sort(key=lambda c: c.name)
 
 i = 0
 choiceList = []
 for c in containers:  
-  if True:
-  #if 'php' in c.name or 'systemd' in c.name:
+  if args.all or 'php' in c.name or 'systemd' in c.name or 'db' in c.name:
     print(i, c.name)
     choiceList.append(c.name)
     i = i + 1
@@ -38,6 +41,5 @@ if choice < 0 or choice >= i:
 cmdStr = "docker exec -it " + choiceList[choice] + " bash"
 subprocess.run(cmdStr, shell=True)
 exit()
-
 
 
